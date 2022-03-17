@@ -14,7 +14,7 @@ class ContactController extends Controller {
 			$args = [];
 			
 			$args['pageObj'] = $page;
-			$template->view('view/static.php', $args);
+			$template->view('../modules/page/views/static.php', $args);
 			return false;
 		}
 		return true;
@@ -31,7 +31,7 @@ class ContactController extends Controller {
 		$args = [];
 		
 		$args['pageObj'] = $page;
-		$template->view('view/contact/contact.php', $args);
+		$template->view('../modules/contact/views/contact.php', $args);
 	}
 	
 	public function submitContactFormAction() {
@@ -46,7 +46,7 @@ class ContactController extends Controller {
 		$args = [];
 		
 		$args['pageObj'] = $page;
-		$template->view('view/static.php', $args);
+		$template->view('../modules/page/views/static.php', $args);
 	}
 	
 }
