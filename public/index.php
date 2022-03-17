@@ -1,5 +1,9 @@
 <?php
 
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
 session_start();
 
 function pad(mixed $val) {
@@ -13,20 +17,17 @@ function safer(string $val): string {
 	return htmlspecialchars(trim($val));
 }
 
-define( 'ROOT_PATH', '../');
-define( 'VIEW_PATH', '../view/');
-define( 'MODULES_PATH', '../modules/');
+define( 'DS', DIRECTORY_SEPARATOR );
+define( 'ROOT_PATH', '..' . DS);
+define( 'VIEW_PATH', '..' . DS . 'modules' . DS . 'page' . DS . 'views' . DS);
+define( 'MODULES_PATH', '..' . DS . 'modules' . DS);
 
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
-
-require_once ROOT_PATH . 'src/Entity.php';
-require_once ROOT_PATH . 'src/Controller.php';
-require_once ROOT_PATH . 'src/Template.php';
-require_once MODULES_PATH . 'page/models/Page.php';
-require_once ROOT_PATH . 'src/Database.php';
-require_once ROOT_PATH . 'src/Router.php';
+require_once ROOT_PATH . 'src' . DS . 'Entity.php';
+require_once ROOT_PATH . 'src' . DS . 'Controller.php';
+require_once ROOT_PATH . 'src' . DS . 'Template.php';
+require_once MODULES_PATH . 'page' . DS . 'models' . DS . 'Page.php';
+require_once ROOT_PATH . 'src' . DS . 'Database.php';
+require_once ROOT_PATH . 'src' . DS . 'Router.php';
 
 Database::connect('localhost', 'splat', 'root', 'root');
 
@@ -42,7 +43,7 @@ $action = $router->action !== '' ? $router->action : 'default';
 
 $module = ucfirst($router->module) . 'Controller';
 
-$controllerFile = MODULES_PATH . $router->module . '/controllers/' . $module . '.php';
+$controllerFile = MODULES_PATH . $router->module . DS . 'controllers' . DS . $module . '.php';
 
 if (file_exists($controllerFile)) {
 	include $controllerFile;

@@ -15,8 +15,7 @@ class PageController extends Controller {
 		$args = [];
 		
 		$args['pageObj'] = $page;
-		
-		$template->view('../view/static.php', $args);
+		$template->view('../modules/page/views/static.php', $args);
 	}
 	
 }
