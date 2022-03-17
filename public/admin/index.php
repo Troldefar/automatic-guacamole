@@ -18,9 +18,9 @@ function safer(string $val): string {
 }
 
 define( 'DS', DIRECTORY_SEPARATOR );
-define( 'ROOT_PATH', '..' . DS);
-define( 'VIEW_PATH', '..' . DS . 'modules' . DS . 'page' . DS . 'views' . DS);
-define( 'MODULES_PATH', '..' . DS . 'modules' . DS);
+define( 'ROOT_PATH', '..' . DS . '..' . DS);
+define( 'VIEW_PATH', '..' . DS . '..' . DS . 'modules' . DS . 'page' . DS . 'views' . DS);
+define( 'MODULES_PATH', '..' . DS . '..' . DS . 'modules' . DS);
 
 require_once ROOT_PATH . 'src' . DS . 'Entity.php';
 require_once ROOT_PATH . 'src' . DS . 'Controller.php';
@@ -40,7 +40,6 @@ $router = new Router($dbc);
 $router->findBy('locater', $action);
 
 $action = $router->action !== '' ? $router->action : 'default';
-
 $module = ucfirst($router->module) . 'Controller';
 
 $controllerFile = MODULES_PATH . $router->module . DS . 'controllers' . DS . $module . '.php';
