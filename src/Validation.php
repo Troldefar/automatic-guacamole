@@ -14,9 +14,7 @@ class Validate {
 	}
 	
 	public function validate($value): bool {
-		foreach ($this->rules as $rule) {
-			if (!$rule->validationRule($value)) return false;
-		}
+		foreach ($this->rules as $rule) if (!$rule->validationRule($value)) return false;
 		return true;
 	}
 	

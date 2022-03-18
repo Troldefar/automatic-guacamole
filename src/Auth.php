@@ -6,7 +6,7 @@ class Auth {
 		
 	}
 	
-	public function login() {
+	public function login(): bool {
 		
 		$validation = new Validation();
 		
@@ -17,6 +17,8 @@ class Auth {
 		) {
 			$_SESSION['auth']['error'] = 'Error';
 		}
+		
+		return true;
 		
 	}
 	
