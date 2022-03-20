@@ -1,6 +1,6 @@
 <?php
 
-class ValidateMinimum {
+class ValidateMinimum implements ValidationRuleInterface {
 	
 	private int $minimum;
 	
@@ -8,8 +8,12 @@ class ValidateMinimum {
 		$this->minimum = $minimum;
 	}
 	
-	public function validateRule(): bool {
+	public function validateRule($value): bool {
 		return strlen($value) < $this->minimum ? false : true;
 	}
+
+	public function getErrorMessage(): string {
+        return safer('Input should be larger than ' . $this->minimum);
+    }
 	
 }

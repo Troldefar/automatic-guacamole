@@ -1,5 +1,13 @@
 <?php
 
+define('DEBUG', basename(__DIR__) === 'dev');
+
+if (!DEBUG) {
+	ini_set('display_errors', 1);
+	ini_set('display_startup_errors', 1);
+	error_reporting(E_ALL);
+}
+
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
@@ -13,8 +21,8 @@ function pad(mixed $val) {
 	exit();
 }
 
-function safer(string $val): string {
-	return htmlspecialchars(trim($val));
+function safer(string $string): string {
+	return htmlspecialchars(trim($string));
 }
 
 define( 'DS', DIRECTORY_SEPARATOR );
@@ -22,6 +30,7 @@ define( 'ROOT_PATH', '..' . DS);
 define( 'VIEW_PATH', '..' . DS . 'modules' . DS . 'page' . DS . 'views' . DS);
 define( 'MODULES_PATH', '..' . DS . 'modules' . DS);
 
+require_once ROOT_PATH . 'src' . DS . 'interfaces' . DS . 'ValidationRuleInterface.php';
 require_once ROOT_PATH . 'src' . DS . 'Entity.php';
 require_once ROOT_PATH . 'src' . DS . 'Controller.php';
 require_once ROOT_PATH . 'src' . DS . 'Template.php';
@@ -34,6 +43,7 @@ require_once ROOT_PATH . 'src/ValidationRules' . DS . 'ValidateMinimum.php';
 require_once ROOT_PATH . 'src/ValidationRules' . DS . 'ValidateMaximum.php';
 require_once ROOT_PATH . 'src/ValidationRules' . DS . 'ValidateEmail.php';
 require_once ROOT_PATH . 'src/ValidationRules' . DS . 'ValidateCharacters.php';
+require_once ROOT_PATH . 'src/ValidationRules' . DS . 'ValidateTrim.php';
 
 require_once MODULES_PATH . 'page' . DS . 'models' . DS . 'Page.php';
 

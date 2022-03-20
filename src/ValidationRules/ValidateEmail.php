@@ -1,6 +1,6 @@
 <?php
 
-class ValidateEmail {
+class ValidateEmail implements ValidationRuleInterface {
 	
 	private int $email;
 	
@@ -8,8 +8,12 @@ class ValidateEmail {
 		$this->email = $email;
 	}
 	
-	public function validateRule(): bool {
+	public function validateRule($value): bool {
 		return filter_var($this->email, FILTER_VALIDATE_EMAIL) ? true : false;
 	}
+
+	public function getErrorMessage(): string {
+        return safer('Input contains invalid characters');
+    }
 	
 }

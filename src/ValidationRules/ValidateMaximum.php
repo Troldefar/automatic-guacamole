@@ -1,6 +1,6 @@
 <?php
 
-class ValidateMaximum {
+class ValidateMaximum implements ValidationRuleInterface {
 	
 	private int $maximum;
 	
@@ -8,8 +8,12 @@ class ValidateMaximum {
 		$this->maximum = $maximum;
 	}
 	
-	public function validateRule(): bool {
+	public function validateRule($value): bool {
 		return strlen($value) > $this->maximum ? false : true;
 	}
+
+	public function getErrorMessage(): string {
+        return safer('Input should be less than ' . $this->minimum);
+    }
 	
 }
