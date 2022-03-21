@@ -30,6 +30,13 @@ define( 'ROOT_PATH', '..' . DS);
 define( 'VIEW_PATH', '..' . DS . 'modules' . DS . 'page' . DS . 'views' . DS);
 define( 'MODULES_PATH', '..' . DS . 'modules' . DS);
 
+echo DS;
+
+spl_autoload_register(function($class) {
+	$file = 'src/' . $class . '.php';
+	if (file_exists($file)) require_once $file;
+});
+
 require_once ROOT_PATH . 'src' . DS . 'interfaces' . DS . 'ValidationRuleInterface.php';
 require_once ROOT_PATH . 'src' . DS . 'Entity.php';
 require_once ROOT_PATH . 'src' . DS . 'Controller.php';
