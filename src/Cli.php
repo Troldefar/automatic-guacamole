@@ -5,14 +5,16 @@ class Cli {
     private array $args = [];
 
     public function __construct(array $args) {
-        unset($arguments[0]);
+        unset($args[0]);
         $this->args = $args;
     }
 
     public function generate(): bool {
         unset($this->args[0]);
         try {
-            var_dump($this->args);
+            $folderIdentifier = 'generatedModule'.rand();
+            mkdir($folderIdentifier, 0777, true);
+            rename($folderIdentifier, 'modules/generated/testFolder'.rand());
             return true;
         } catch (\Exception $e) {
             return false;
