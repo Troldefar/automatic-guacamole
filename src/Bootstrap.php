@@ -29,10 +29,10 @@ class Bootstrap {
             require_once MODULES_PATH . 'page' . DS . 'models' . DS . 'Page.php';
 
             Database::connect(
-                Json::config()->db->host, 
-                Json::config()->db->table, 
-                Json::config()->db->username, 
-                Json::config()->db->password
+                $host  = Json::config()->db->host, 
+                $table = Json::config()->db->table, 
+                $user  = Json::config()->db->username, 
+                $pw    = Json::config()->db->password
             );
 
             $dbh = Database::getInstance();
