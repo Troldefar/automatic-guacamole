@@ -6,5 +6,6 @@
         "table": "splat",
         "username": "root",
         "password": "root"
-    }
+    },
+    "siteID": 1
 }
