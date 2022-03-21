@@ -1,1 +1,1 @@
-# automatic-guacamole
+# 🥑 automatic-guacamole 🥑
