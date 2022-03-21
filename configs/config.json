@@ -1,0 +1,10 @@
+{
+    "name": "automatic-advocado",
+    "keys": [],
+    "db": {
+        "host": "localhost",
+        "table": "splat",
+        "username": "root",
+        "password": "root"
+    }
+}
