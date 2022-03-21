@@ -5,7 +5,7 @@ abstract class Entity {
 	protected string $table;
 	protected array  $fields;
 	protected /*c*/  $dbc;
-    protected $primaryKeys = ['id'];
+    protected array  $primaryKeys = ['id'];
 	
 	protected abstract function initFields();
 	
