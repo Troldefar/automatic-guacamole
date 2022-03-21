@@ -11,9 +11,9 @@ class Cli {
 
     public function generate(): bool {
         try {
-            $folderIdentifier = 'generatedModule'.rand();
+            $folderIdentifier = $this->args[2].rand();
             mkdir($folderIdentifier, 0777, true);
-            rename($folderIdentifier, 'modules/generated/testFolder'.rand());
+            rename($folderIdentifier, 'modules/generated/'.$this->args[2].rand());
             return true;
         } catch (\Exception $e) {
             return false;
