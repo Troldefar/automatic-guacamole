@@ -10,7 +10,6 @@ class Cli {
     }
 
     public function generate(): bool {
-        unset($this->args[0]);
         try {
             $folderIdentifier = 'generatedModule'.rand();
             mkdir($folderIdentifier, 0777, true);
